@@ -1,15 +1,14 @@
-# gulp-uglify [![Build Status](http://img.shields.io/travis/terinjokes/gulp-uglify.svg?style=flat)](https://travis-ci.org/terinjokes/gulp-uglify) [![](http://img.shields.io/npm/dm/gulp-uglify.svg?style=flat)](https://www.npmjs.org/package/gulp-uglify) [![](http://img.shields.io/npm/v/gulp-uglify.svg?style=flat)](https://www.npmjs.org/package/gulp-uglify) [![](http://img.shields.io/codeclimate/github/terinjokes/gulp-uglify.svg?style=flat)](https://codeclimate.com/github/terinjokes/gulp-uglify) [![](http://img.shields.io/codeclimate/coverage/github/terinjokes/gulp-uglify.svg?style=flat)](https://codeclimate.com/github/terinjokes/gulp-uglify)
-
-> Minify JavaScript with UglifyJS2.
+# gulp-cola
+ColaScript compiler plugin for Gulp.
 
 ## Usage
 
 ```javascript
-var uglify = require('gulp-uglify');
+var cola = require('gulp-cola');
 
-gulp.task('compress', function() {
-  gulp.src('lib/*.js')
-    .pipe(uglify())
+gulp.task('compile', function() {
+  gulp.src('app/*.cola')
+    .pipe(cola())
     .pipe(gulp.dest('dist'))
 });
 ```

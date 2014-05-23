@@ -1,12 +1,12 @@
 'use strict';
 var through = require('through2'),
-	uglify = require('uglify-js'),
+	cola = require('cola-script'),
 	merge = require('deepmerge'),
-	uglifyError = require('./lib/error.js');
+	colaError = require('./lib/error.js');
 
 module.exports = function(opt) {
 
-	function minify(file, encoding, callback) {
+	function translate(file, encoding, callback) {
 		/*jshint validthis:true */
 
 		if (file.isNull()) {
@@ -15,7 +15,7 @@ module.exports = function(opt) {
 		}
 
 		if (file.isStream()) {
-			return callback(uglifyError('Streaming not supported', {
+			return callback(colaError('Streaming not supported', {
 				fileName: file.path,
 				showStack: false
 			}));
@@ -26,7 +26,7 @@ module.exports = function(opt) {
 			output: {}
 		});
 
-		var mangled,
+		var translated,
 			originalSourceMap;
 
 		if (file.sourceMap) {
@@ -45,10 +45,10 @@ module.exports = function(opt) {
 		}
 
 		try {
-			mangled = uglify.minify(String(file.contents), options);
-			file.contents = new Buffer(mangled.code);
+			translated = cola.translate(String(file.contents), options);
+			file.contents = new Buffer(translated.code);
 		} catch (e) {
-			return callback(uglifyError(e.message, {
+			return callback(colaError(e.message, {
 				fileName: file.path,
 				lineNumber: e.line,
 				stack: e.stack,
@@ -57,7 +57,7 @@ module.exports = function(opt) {
 		}
 
 		if (file.sourceMap) {
-			file.sourceMap = JSON.parse(mangled.map);
+			file.sourceMap = JSON.parse(translated.map);
 			file.sourceMap.sourcesContent = originalSourceMap.sourcesContent;
 			file.sourceMap.sources = originalSourceMap.sources;
 		}
@@ -67,5 +67,5 @@ module.exports = function(opt) {
 		callback();
 	}
 
-	return through.obj(minify);
+	return through.obj(translate);
 };
