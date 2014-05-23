@@ -50,7 +50,3 @@ gulp.task('compile', function() {
 		Specify your own comment preservation function. You will be passed the
 		current node and the current comment and are expected to return either
 		`true` or `false`.
-
-You can also pass the `uglify` function any of the options [listed
-here](https://github.com/mishoo/UglifyJS2#the-simple-way) to modify
-UglifyJS's behavior.
