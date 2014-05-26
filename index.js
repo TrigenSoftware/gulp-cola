@@ -1,5 +1,6 @@
 'use strict';
-var through = require('through2'),
+var path = require('path'),
+    through = require('through2'),
 	cola = require('cola-script'),
 	merge = require('deepmerge'),
 	colaError = require('./lib/error.js');
@@ -23,6 +24,7 @@ module.exports = function(opt) {
 
 		var options = merge(opt || {}, {
 			fromString: true,
+			path: path.dirname(file.path),
 			output: {}
 		});
 

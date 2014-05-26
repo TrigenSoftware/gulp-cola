@@ -1,7 +1,7 @@
 {
   "name": "gulp-cola",
   "description": "ColaScript compiler plugin for Gulp.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Dan Onoshko <danon0404@gmail.com>",
   "bugs": "https://github.com/TrigenSoftware/gulp-cola/issues",
   "dependencies": {
