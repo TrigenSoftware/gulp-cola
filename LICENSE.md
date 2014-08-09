@@ -1,5 +1,4 @@
 > Copyright (c) 2013-2014 Terin Stock <terinjokes@gmail.com>
->
 > Copyright (c) 2014 TrigenSoftware <danon0404@gmail.com>
 >
 > Permission is hereby granted, free of charge, to any person obtaining
