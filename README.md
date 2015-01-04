@@ -1,5 +1,18 @@
-# gulp-cola
-ColaScript compiler plugin for Gulp.
+*Gulp Cola*
+==========
+
+[ColaScript](https://github.com/TrigenSoftware/ColaScript) compiler plugin for Gulp.
+
+## Installation
+
+Firstly, make sure you have installed the latest version of [node.js](http://nodejs.org/)
+(You may need to restart your computer after this step).
+
+From NPM for programmatic use:
+
+```
+$ npm install gulp-cola
+```
 
 ## Usage
 
@@ -7,13 +20,25 @@ ColaScript compiler plugin for Gulp.
 var cola = require('gulp-cola');
 
 gulp.task('compile', function() {
-  gulp.src('app/*.cola')
-    .pipe(cola())
-    .pipe(gulp.dest('dist'))
+    gulp.src('app/*.cola')
+        .pipe(cola())
+        .pipe(gulp.dest('dist'))
 });
 ```
 
 ## Options
+
+- `is_node`       
+
+	Pass `true` to compilation for node.
+
+- `modules` 
+
+    Pass an object if you wish to specify [modules](https://github.com/TrigenSoftware/ColaScript/wiki/Modules).
+
+- `main_binding `
+
+    Pass `false` to disable wrapping of `main` function.
 
 - `mangle`
 

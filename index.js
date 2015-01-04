@@ -1,4 +1,5 @@
 'use strict';
+
 var path = require('path'),
     through = require('through2'),
 	cola = require('cola-script'),
